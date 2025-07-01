@@ -1,0 +1,20 @@
+<div class="container py-5">
+  <div *ngIf="loading" class="alert alert-info">Loading job details...</div>
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+  <div *ngIf="job && !loading">
+    <div class="card shadow mb-4">
+      <div class="card-body">
+        <h2 class="card-title">{{ job.title }}</h2>
+        <h5 class="card-subtitle mb-2 text-muted">{{ job.company }}</h5>
+        <p class="card-text">{{ job.description }}</p>
+        <div *ngIf="auth.isAuthenticated()">
+          <button *ngIf="!applied" class="btn btn-success" (click)="apply()" [disabled]="applyLoading">Apply</button>
+          <span *ngIf="applied" class="badge bg-success ms-2">Already applied</span>
+          <div *ngIf="applyError" class="alert alert-danger mt-2">{{ applyError }}</div>
+        </div>
+        <div *ngIf="!auth.isAuthenticated()" class="alert alert-warning mt-3">Sign in to apply for this job.</div>
+      </div>
+    </div>
+    <a routerLink="/jobs" class="btn btn-outline-secondary">Back to Jobs</a>
+  </div>
+</div>

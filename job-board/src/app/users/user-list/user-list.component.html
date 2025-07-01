@@ -1,0 +1,22 @@
+<div class="card mb-4">
+  <div class="card-header bg-primary text-white">Users</div>
+  <div class="card-body">
+    <div *ngIf="loading" class="alert alert-info">Loading users...</div>
+    <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+    <table *ngIf="!loading && users.length" class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="!loading && !users.length" class="alert alert-warning">No users found.</div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="card mb-4">
+  <div class="card-header bg-success text-white">Add Job</div>
+  <div class="card-body">
+    <form (ngSubmit)="submit()" #jobForm="ngForm">
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input name="title" [(ngModel)]="job.title" required class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Description</label>
+        <input name="description" [(ngModel)]="job.description" required class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Company</label>
+        <input name="company" [(ngModel)]="job.company" required class="form-control" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">User ID</label>
+        <input name="userId" [(ngModel)]="job.userId" required type="number" class="form-control" />
+      </div>
+      <button type="submit" [disabled]="loading || !jobForm.form.valid" class="btn btn-success">Create Job</button>
+      <div *ngIf="success" class="alert alert-success mt-3">{{ success }}</div>
+      <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
+    </form>
+  </div>
+</div>

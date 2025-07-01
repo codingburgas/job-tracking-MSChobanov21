@@ -1,0 +1,26 @@
+<div class="container py-5">
+  <div class="card shadow">
+    <div class="card-header bg-info text-white">My Applications</div>
+    <div class="card-body">
+      <div *ngIf="loading" class="alert alert-info">Loading applications...</div>
+      <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+      <table *ngIf="!loading && applications.length" class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Job Title</th>
+            <th>Company</th>
+            <th>Applied At</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let app of applications">
+            <td>{{ app.job?.title }}</td>
+            <td>{{ app.job?.company }}</td>
+            <td>{{ app.appliedAt | date:'medium' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="!loading && !applications.length" class="alert alert-warning">You have not applied to any jobs yet.</div>
+    </div>
+  </div>
+</div>
